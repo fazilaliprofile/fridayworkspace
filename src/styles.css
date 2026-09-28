@@ -16,18 +16,16 @@ h1 { margin: 0; font-size: 34px; letter-spacing: -.04em; }
 textarea { width: 100%; resize: vertical; min-height: 120px; color: #f5f7ff; background: rgba(255,255,255,.045); border: 1px solid rgba(255,255,255,.11); border-radius: 14px; padding: 14px; outline: none; }
 textarea:focus { border-color: rgba(130,170,255,.55); }
 button { width: 100%; margin-top: 10px; border: 0; border-radius: 13px; padding: 13px 15px; cursor: pointer; color: #08101b; background: #dce8ff; font-weight: 750; }
+button:disabled { cursor: not-allowed; opacity: .65; }
 button span { float: right; }
 .hint { margin-top: 18px; color: #66718a; font-size: 11px; line-height: 1.5; }
 .canvas-panel { padding: 18px; display: flex; flex-direction: column; }
 .canvas-toolbar { display: flex; justify-content: space-between; color: #78839a; font-size: 10px; letter-spacing: .12em; padding: 6px 4px 12px; }
-.scene { position: relative; overflow: hidden; flex: 1; min-height: 520px; border: 1px solid rgba(255,255,255,.08); border-radius: 20px; background: radial-gradient(circle at 50% 43%, rgba(80,120,220,.12), transparent 27%), #070b13; display: grid; place-items: center; }
-.grid-plane { position: absolute; inset: 52% -10% -35%; background-image: linear-gradient(rgba(120,150,210,.12) 1px, transparent 1px), linear-gradient(90deg, rgba(120,150,210,.12) 1px, transparent 1px); background-size: 38px 38px; transform: perspective(450px) rotateX(58deg); opacity: .6; }
-.model-placeholder { position: relative; width: 170px; height: 170px; display: grid; place-items: center; }
-.orb { width: 82px; height: 82px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #e5f0ff, #7693ca 28%, #263655 63%, #111827 70%); box-shadow: 0 0 55px rgba(108,153,255,.4); }
-.ring { position: absolute; border: 1px solid rgba(150,190,255,.42); border-radius: 50%; transform: rotateX(67deg) rotateZ(18deg); }
-.ring-a { width: 160px; height: 55px; }
-.ring-b { width: 125px; height: 45px; transform: rotateX(67deg) rotateZ(-28deg); }
-.canvas-message, .canvas-submessage { position: absolute; bottom: 30px; }
-.canvas-message { bottom: 52px; font-size: 14px; color: #c8d2e8; }
-.canvas-submessage { bottom: 28px; font-size: 11px; color: #66718a; }
+.scene { position: relative; overflow: hidden; flex: 1; min-height: 520px; border: 1px solid rgba(255,255,255,.08); border-radius: 20px; background: radial-gradient(circle at 50% 43%, rgba(80,120,220,.12), transparent 27%), #070b13; }
+.three-mount { position: absolute; inset: 0; }
+.three-mount canvas { display: block; width: 100%; height: 100%; }
+.empty-scene { position: absolute; inset: 0; display: grid; place-items: center; color: #66718a; font-size: 12px; pointer-events: none; }
+.canvas-message, .canvas-submessage { position: absolute; left: 50%; transform: translateX(-50%); text-align: center; pointer-events: none; white-space: nowrap; }
+.canvas-message { bottom: 48px; font-size: 14px; color: #c8d2e8; }
+.canvas-submessage { bottom: 25px; font-size: 11px; color: #66718a; }
 @media (max-width: 800px) { .workspace { grid-template-columns: 1fr; } .sidebar { border-right: 0; border-bottom: 1px solid rgba(255,255,255,.08); } .scene { min-height: 430px; } }
