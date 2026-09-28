@@ -1,4 +1,5 @@
 const TRIPO_BASE_URL = 'https://openapi.tripo3d.ai/v3';
+const TRIPO_MODEL = 'v3.1-20260211';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -26,7 +27,7 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         prompt,
-        model: 'tripo-v3.1',
+        model: TRIPO_MODEL,
         texture: true,
         pbr: true,
         texture_quality: 'detailed',
@@ -46,7 +47,8 @@ export default async function handler(req, res) {
 
     return res.status(200).json({
       taskId: payload.data.task_id,
-      provider: 'tripo'
+      provider: 'tripo',
+      model: TRIPO_MODEL
     });
   } catch (error) {
     return res.status(502).json({
