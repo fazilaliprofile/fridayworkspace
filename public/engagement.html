@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Engagement Invitation</title>
+<style>
+:root{--ink:#30231d;--gold:#b98a42;--cream:#fbf5ea;--rose:#ead7ce}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Georgia,'Times New Roman',serif;background:#160f0c;color:var(--ink)}
+body{display:grid;place-items:center;overflow-x:hidden}.stage{min-height:100vh;width:100%;display:grid;place-items:center;padding:28px;background:radial-gradient(circle at 50% 10%,#4a3026 0,#160f0c 48%,#090605 100%)}
+.card{position:relative;width:min(92vw,620px);min-height:760px;background:linear-gradient(145deg,#fffaf1,#f4e7d8);border-radius:28px;box-shadow:0 35px 90px #0009,0 0 0 1px #fff2;overflow:hidden;text-align:center;padding:56px 38px 48px;animation:rise 1s ease both}
+.card:before,.card:after{content:'';position:absolute;border:1px solid #b98a4266;border-radius:50%;width:330px;height:330px}.card:before{top:-190px;left:-180px}.card:after{bottom:-210px;right:-180px}
+.ornament{font-size:28px;color:var(--gold);letter-spacing:8px}.eyebrow{margin:25px 0 10px;text-transform:uppercase;letter-spacing:5px;font-size:11px;color:#806445}.title{font-size:clamp(42px,10vw,72px);font-weight:400;line-height:.95;margin:0;color:#3a2921}.amp{font-style:italic;color:var(--gold);font-size:.7em}.names{margin:28px 0 18px;font-size:clamp(30px,7vw,48px);font-weight:400}.line{width:92px;height:1px;background:var(--gold);margin:25px auto}.message{max-width:430px;margin:0 auto;font-size:16px;line-height:1.8;color:#634e42}.details{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin:34px auto;width:min(100%,450px);border-top:1px solid #b98a4266;border-bottom:1px solid #b98a4266}.detail{padding:20px 10px}.detail b{display:block;text-transform:uppercase;letter-spacing:2px;font-size:10px;color:#806445;margin-bottom:8px}.detail span{font-size:16px}.cta{display:inline-block;margin-top:28px;padding:14px 25px;border:1px solid var(--gold);border-radius:999px;color:#5b4028;text-decoration:none;font-size:12px;letter-spacing:2px;text-transform:uppercase;transition:.25s}.cta:hover{background:#b98a42;color:white}.footer{margin-top:34px;font-size:11px;letter-spacing:2px;color:#9a7650;text-transform:uppercase}
+.cover{position:absolute;inset:0;z-index:5;background:linear-gradient(150deg,#3a251d,#1b110d);display:grid;place-items:center;color:#fff8ed;cursor:pointer;transition:transform 1s cubic-bezier(.77,0,.18,1),opacity .5s}.cover.open{transform:translateY(-105%);opacity:0;pointer-events:none}.seal{width:92px;height:92px;border:1px solid #c9a466;border-radius:50%;display:grid;place-items:center;font-size:28px;color:#d6b475;margin:auto}.cover small{display:block;margin-top:24px;letter-spacing:4px;text-transform:uppercase;font-size:10px;color:#ddc8aa}.cover h2{font-weight:400;letter-spacing:2px;font-size:28px;margin:18px 0 0}.hint{position:absolute;bottom:28px;left:0;right:0;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#d0b895}
+@keyframes rise{from{opacity:0;transform:translateY(28px) scale(.98)}to{opacity:1;transform:none}}
+@media(max-width:520px){.stage{padding:12px}.card{min-height:700px;padding:46px 22px 36px;border-radius:22px}.details{grid-template-columns:1fr}.detail{padding:14px}.message{font-size:14px}}
+</style>
+</head>
+<body>
+<div class="stage"><main class="card">
+<div class="cover" id="cover" role="button" tabindex="0" aria-label="Open invitation"><div><div class="seal">♥</div><h2>You're Invited</h2><small>Tap to open</small></div><div class="hint">An evening to remember</div></div>
+<div class="ornament">✦　❦　✦</div><p class="eyebrow">Together with our families</p><h1 class="title">Engagement</h1><div class="line"></div><div class="names">Fazil <span class="amp">&amp;</span> Your Name</div><p class="message">With joyful hearts, we invite you to celebrate the beginning of a beautiful new chapter with us.</p>
+<section class="details"><div class="detail"><b>Date</b><span>To be announced</span></div><div class="detail"><b>Time</b><span>To be announced</span></div><div class="detail"><b>Venue</b><span>To be announced</span></div><div class="detail"><b>Dress Code</b><span>Elegant</span></div></section>
+<a class="cta" href="#details">Save the Date</a><div class="footer">With love &amp; gratitude</div>
+</main></div>
+<script>const c=document.getElementById('cover');const open=()=>c.classList.add('open');c.addEventListener('click',open);c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}});</script>
+</body></html>
