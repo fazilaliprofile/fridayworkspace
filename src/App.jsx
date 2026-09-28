@@ -3,11 +3,24 @@ import { useState } from 'react';
 export default function App() {
   const [prompt, setPrompt] = useState('');
   const [status, setStatus] = useState('Ready');
+  const [generated, setGenerated] = useState(false);
+  const [isGenerating, setIsGenerating] = useState(false);
 
   function handleCreate(event) {
     event.preventDefault();
-    if (!prompt.trim()) return;
-    setStatus(`Concept request received: ${prompt.trim()}`);
+    const idea = prompt.trim();
+    if (!idea || isGenerating) return;
+
+    setIsGenerating(true);
+    setGenerated(false);
+    setStatus(`Creating concept: ${idea}`);
+
+    // V1 interaction placeholder: the real AI 3D API will replace this step.
+    window.setTimeout(() => {
+      setIsGenerating(false);
+      setGenerated(true);
+      setStatus(`Concept ready: ${idea}`);
+    }, 900);
   }
 
   return (
@@ -28,23 +41,30 @@ export default function App() {
               onChange={(e) => setPrompt(e.target.value)}
               placeholder="Create a humanoid robot..."
               rows={5}
+              disabled={isGenerating}
             />
-            <button type="submit">Create 3D concept <span>↗</span></button>
+            <button type="submit" disabled={isGenerating || !prompt.trim()}>
+              {isGenerating ? 'Creating concept…' : generated ? 'Create another concept' : 'Create 3D concept'} <span>↗</span>
+            </button>
           </form>
-          <div className="hint">V1 foundation · prompt → 3D scene → interactive canvas</div>
+          <div className="hint">V1 foundation · prompt → concept → interactive 3D canvas</div>
         </aside>
 
         <section className="canvas-panel" aria-label="Friday 3D canvas">
           <div className="canvas-toolbar"><span>3D VIEWPORT</span><span>Perspective · V1</span></div>
-          <div className="scene">
+          <div className={`scene ${generated ? 'scene-generated' : ''}`}>
             <div className="grid-plane" />
             <div className="model-placeholder">
               <div className="orb" />
               <div className="ring ring-a" />
               <div className="ring ring-b" />
             </div>
-            <div className="canvas-message">Your 3D workspace starts here</div>
-            <div className="canvas-submessage">Generate a concept from the prompt panel.</div>
+            <div className="canvas-message">
+              {isGenerating ? 'Generating concept…' : generated ? `Concept created: ${prompt.trim()}` : 'Your 3D workspace starts here'}
+            </div>
+            <div className="canvas-submessage">
+              {isGenerating ? 'Preparing the interactive workspace.' : generated ? 'V1 interaction complete · AI 3D generation is the next integration.' : 'Generate a concept from the prompt panel.'}
+            </div>
           </div>
         </section>
       </section>
