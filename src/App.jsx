@@ -150,7 +150,7 @@ export default function App() {
     <section className="workspace">
       <aside className="sidebar"><p className="eyebrow">AI 3D CREATION</p><h1>Create anything.</h1><p className="subtext">Describe an object or system. Friday sends the prompt to Tripo and loads the generated GLB into the interactive 3D workspace.</p>
         <form onSubmit={handleCreate}><textarea value={prompt} onChange={e=>setPrompt(e.target.value)} placeholder="Create a realistic futuristic robot, sports car, drone..." rows={5} disabled={isGenerating}/><button type="submit" disabled={isGenerating||!prompt.trim()}>{isGenerating?`Generating ${progress}%…`:generated?'Create another concept':'Generate real 3D model'} <span>↗</span></button></form>
-        {error&&<div className="hint">{error}</div>}<div className="hint">Tripo v3.1 · text → AI 3D → GLB → Three.js</div>
+        {error&&<div className="hint">{error}</div>}<div className="hint">Tripo v3.1-20260211 · text → AI 3D → GLB → Three.js</div>
       </aside>
       <section className="canvas-panel" aria-label="Friday 3D canvas"><div className="canvas-toolbar"><span>3D VIEWPORT</span><span>{generated?'TRIPO GLB · Orbit · Zoom · Pan':'AI MODEL · Orbit · Zoom · Pan'}</span></div>
         <div className="scene"><GenericScene active={generated} prompt={concept} modelUrl={modelUrl} onLoaded={()=>setStatus('3D model loaded · workspace ready')}/>{!generated&&!isGenerating&&<div className="empty-scene">Describe anything to generate a real 3D model.</div>}{generated&&<><div className="canvas-message">{concept}</div><div className="canvas-submessage">AI-generated GLB · Interactive Three.js viewport</div></>}{isGenerating&&<div className="empty-scene">Tripo is generating your 3D model… {progress}%</div>}</div>
